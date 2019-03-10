@@ -1,18 +1,22 @@
-const express = require('express');
-const app = express();
-const Home = require('./container/Home');
+import express from 'express';
+import Home from './container/Home';
+import ReactDom from 'react-dom';
+import {renderToString} from 'react-dom/server';
+import React from 'react';
 
+const app = express();
+const content = renderToString(<Home />);
 app.get('/', function (req, res) {
-  res.send(
-      `<html>
-        <head>
-            <title>111</title>
-        </head>
-        <body>
-            <div>123</div>
-        </body>
-      </html>
-      `);
+  res.send(`
+    <html>
+      <head>
+        <title>init ssr</title>
+      </head>
+      <body>
+        ${content}
+      </body>
+    </html>
+  `);
 });
 
 app.get('/xx', (req, res) => {
