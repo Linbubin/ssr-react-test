@@ -5,6 +5,8 @@ import {renderToString} from 'react-dom/server';
 import React from 'react';
 
 const app = express();
+app.use(express.static('public'));
+
 const content = renderToString(<Home />);
 app.get('/', function (req, res) {
   res.send(`
@@ -13,7 +15,8 @@ app.get('/', function (req, res) {
         <title>init ssr</title>
       </head>
       <body>
-        ${content}
+        <div id='root'>${content}</div>
+        <script src="index.js"></script>
       </body>
     </html>
   `);
