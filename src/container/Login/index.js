@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '../../components/Header'
 
-const Home = () => (
-    <div onClick={()=>{console.log(123)}}>
+const Login = () => (
+    <div>
         <Header />
-        Home
+        Login
     </div>
 );
 
-export default Home;
+export default Login;

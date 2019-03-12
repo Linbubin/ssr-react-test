@@ -1,24 +1,10 @@
 import express from 'express';
-import Home from '../container/Home';
-import {renderToString} from 'react-dom/server';
-import React from 'react';
-
+import { render } from './util';
 const app = express();
 app.use(express.static('public'));
 
-const content = renderToString(<Home />);
-app.get('/', function (req, res) {
-  res.send(`
-    <html>
-      <head>
-        <title>init ssr</title>
-      </head>
-      <body>
-        <div id='root'>${content}</div>
-        <script src="index.js"></script>
-      </body>
-    </html>
-  `);
+app.get('*', function (req, res) {
+  res.send(render(req));
 });
 
 app.get('/xx', (req, res) => {
