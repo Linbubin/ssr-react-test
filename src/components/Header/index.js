@@ -1,12 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Header = () => (
     <div>
         <Link to='/'>Home</Link>
-        <br/>
+        <br />
         <Link to='/login'>Login</Link>
     </div>
 );
 
-export default Header;
+const mapStateToProps = (state) => ({
+    x: state.x
+})
+export default connect(mapStateToProps, null)(Header);
