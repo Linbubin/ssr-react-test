@@ -14,3 +14,16 @@
 
 # 差异
 * componentDidMount 在服务器端不会执行
+
+# 流程
+* 运行`http://localhost:3300/`, 被 server/index 的get*获取,从而render相应代码.
+* render中是由react-router-dom和redux包裹的react代码
+* 根据router会到Home/index里面加载内容
+* 由于服务器端不会执行`componentDidMount`生命周期函数,所以 list始终都保持初始值.不会加载其他内容.
+* 又因为render出的HTML代码中包含`build/bundle.js`
+
+* 所以开始加载client/index.js
+* 同理,因为`componentDidMount`能在客户端执行,所以会去请求数据,填充redux
+* 页面加载数据
+
+* 两者差异可以已肉看查看和查看代码来解决
