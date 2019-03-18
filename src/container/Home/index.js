@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header'
 import { connect } from 'react-redux';
+import { getHomeList } from './store/action';
+
+console.log(getHomeList)
 
 class Home extends Component{
+    componentDidMount(){
+        this.props.getHomeList()
+    }
     render(){
         return(
             <div onClick={()=>{console.log(123)}}>
@@ -15,10 +21,16 @@ class Home extends Component{
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
-        name:123
+        name: state.home.name
     }
 }
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = dispatch => ({
+    getHomeList(){
+        dispatch(getHomeList())
+    }
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
