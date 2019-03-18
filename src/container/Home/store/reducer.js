@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { CHANGE_LIST } from './contants';
 
 const initState = {
     newList: [],
@@ -6,11 +6,15 @@ const initState = {
 };
 
 const reducer = (state=initState, action) => {
-    // switch(action.type){
-    //     default:
-    //         return state
-    // }
-    return state
+    switch(action.type){
+        case CHANGE_LIST:
+           return {
+                ...state,
+                newList: action.list
+            }
+        default:
+            return state
+    }
 }
 
 export default reducer;

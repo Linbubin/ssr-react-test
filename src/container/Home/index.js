@@ -3,8 +3,6 @@ import Header from '../../components/Header'
 import { connect } from 'react-redux';
 import { getHomeList } from './store/action';
 
-console.log(getHomeList)
-
 class Home extends Component{
     componentDidMount(){
         this.props.getHomeList()
@@ -15,6 +13,7 @@ class Home extends Component{
                 <Header />
                 <div>this is {this.props.name}</div>
                 Home
+                {this.props.newList.map(item => <h1 key={item}>{item}</h1>)}
             </div>
         )
     }
@@ -22,7 +21,8 @@ class Home extends Component{
 
 const mapStateToProps = (state) => {
     return {
-        name: state.home.name
+        name: state.home.name,
+        newList: state.home.newList
     }
 }
 

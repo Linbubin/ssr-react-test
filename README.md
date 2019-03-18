@@ -11,3 +11,6 @@
 * JS的React代码在浏览器端重新执行
 * JS的React代码接管页面操作
 * 最终渲染
+
+# 差异
+* componentDidMount 在服务器端不会执行
