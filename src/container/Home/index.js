@@ -32,5 +32,8 @@ const mapDispatchToProps = dispatch => ({
     }
 })
 
+Home.loadData = () => {
+    //这个函数在服务器渲染之前,将需要的数据提前加载好
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
